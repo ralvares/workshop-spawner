@@ -21,7 +21,7 @@ RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
 RUN HOME=/root && \
     npm install -g configurable-http-proxy && \
     REMOVE_PKGS="cargo python3-devel openssl-devel libffi-devel libtool-ltdl gcc rust" && \
-    pip3 install jmespath openshift setuptools-rust && \
+    pip3 install jmespath kubernetes==11.0.0 openshift==0.11.0 setuptools-rust && \
     pip3 install jupyterhub jupyterhub-tmpauthenticator jupyterhub-kubespawner oauthenticator wrapt && \
     dnf remove -y $REMOVE_PKGS
 
