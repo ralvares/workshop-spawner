@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec python `dirname $0`/cull-idle-servers.py "$@"
+exec python3 `dirname $0`/cull-idle-servers.py "$@"
