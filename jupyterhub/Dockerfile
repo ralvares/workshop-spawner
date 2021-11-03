@@ -5,7 +5,7 @@ USER root
 RUN HOME=/root && \
 rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
 
-INSTALL_PKGS="cargo npm openssl-devel libffi-devel libtool-ltdl python3-devel python3-pip python3-cryptography python3-mod_wsgi python3-wheel python3-setuptools jq httpd mod_ssl mod_session" && \
+INSTALL_PKGS="cargo npm openssl-devel libffi-devel libtool-ltdl python3-devel python3-pip python3-cryptography python3-mod_wsgi python3-wheel python3-setuptools jq" && \
 dnf module reset nodejs -y && \
 dnf module install nodejs:14 -y && \
 yum update -y && yum -y --setopt=tsflags=nodocs install $INSTALL_PKGS && \
