@@ -1,6 +1,10 @@
 Workshop Terminal/Dashboard Spawner
 ===================================
 
+This Projet is based on the old - https://github.com/openshift-homeroom/workshop-dashboard/.
+
+*It is a working in progress and does not contain all the packages from the old one - !be warned!*
+
 This repository contains an application spawner for deploying a containerised user environment in OpenShift, for the purposes of supporting workshops using OpenShift.
 
 The environment created for each user is pre-populated with OpenShift and Kubernetes command line clients, along with development tools for Java, Node.js and Python. Access to the user environment is provided via an interactive terminal delivered to the user via their web browser.
@@ -10,11 +14,11 @@ Workshop base images
 
 Workshop content and any additional applications required are bundled as an image. The base image for the full workshop environment is:
 
-* https://github.com/openshift-homeroom/workshop-dashboard
+* https://github.com/ralvares/workshop-dashboard
 
 The base image if needing only an interactive terminal is:
 
-* https://github.com/openshift-homeroom/workshop-terminal
+* https://github.com/ralvares/workshop-terminal
 
 A workshop image would extend these to add their own content.
 
@@ -43,7 +47,7 @@ For each spawner configuration there is a separate template. The templates come 
 The format of the command for deploying the spawner using any of the templates is:
 
 ```
-oc process -f https://raw.githubusercontent.com/openshift-homeroom/workshop-spawner/master/templates/learning-portal-production.json --param SPAWNER_NAMESPACE=`oc project --short` --param CLUSTER_SUBDOMAIN=apps.openshiftcluster.com | oc apply -f -
+oc process -f https://raw.githubusercontent.com/ralvares/workshop-spawner/master/templates/learning-portal-production.json --param SPAWNER_NAMESPACE=`oc project --short` --param CLUSTER_SUBDOMAIN=apps.openshiftcluster.com | oc apply -f -
 ```
 
 In this case we have used the `learning-portal` template. Replace the name with that for the configuration you want to use.
@@ -75,16 +79,7 @@ Each template provides a range of template parameters that can be supplied to cu
 For example, to override the default image for the user environment and supply a reference to a custom image for a specific workshop, use the `WORKSHOP_IMAGE` template parameter. You can use the `WORKSHOP_NAME` template parameter to override the name used for the deployment.
 
 ```
-oc new-app https://raw.githubusercontent.com/openshift-homeroom/workshop-spawner/master/templates/learning-portal-production.json --param SPAWNER_NAMESPACE=`oc project --short` --param WORKSHOP_NAME=lab-workshop-content --param WORKSHOP_IMAGE=quay.io/openshifthomeroom/lab-workshop-content:master
+oc new-app https://raw.githubusercontent.com/ralvares/workshop-spawner/master/templates/learning-portal-production.json --param SPAWNER_NAMESPACE=`oc project --short` --param WORKSHOP_NAME=lab-workshop-content --param WORKSHOP_IMAGE=quay.io/openshifthomeroom/lab-workshop-content:master
 ```
 
 Look at the individual template files in the templates directory for the list of parameters they accept.
-
-Deployment scripts
-------------------
-
-For an easier way of deploying a workshop for multiple users, check out the repository:
-
-* https://github.com/openshift-homeroom/workshop-scripts
-
-This can be used in combination with the repository for a workshop, to embed deployment scripts into the workshop for deploying it, without needing any knowledge of the specific steps.

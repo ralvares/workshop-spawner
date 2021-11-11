@@ -62,7 +62,7 @@
         },
         {
             "name": "CONSOLE_IMAGE",
-            "value": "quay.io/openshift/origin-console:4.2",
+            "value": "quay.io/openshift/origin-console:latest",
             "required": true
         },
         {
@@ -88,7 +88,7 @@
         },
         {
             "name": "SPAWNER_IMAGE",
-            "value": "quay.io/openshifthomeroom/workshop-spawner:7.1.0",
+            "value": "quay.io/ralvares/workshop-spawner:latest",
             "required": true
         },
         {
@@ -558,7 +558,7 @@
                         "name": "latest",
                         "from": {
                             "kind": "DockerImage",
-                            "name": "quay.io/openshifthomeroom/workshop-terminal:3.4.3"
+                            "name": "quay.io/ralvares/workshop-terminal:latest"
                         }
                     }
                 ]
