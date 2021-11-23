@@ -13,6 +13,9 @@ import time
 import requests
 import wrapt
 
+import urllib3
+urllib3.disable_warnings()
+
 from tornado import gen
 
 from kubernetes.client.rest import ApiException
@@ -102,8 +105,6 @@ if kubernetes_server_info['major'] == '1':
 
 load_incluster_config()
 
-import urllib3
-urllib3.disable_warnings()
 instance = Configuration()
 instance.verify_ssl = False
 Configuration.set_default(instance)
