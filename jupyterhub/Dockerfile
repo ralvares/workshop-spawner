@@ -5,9 +5,9 @@ USER root
 RUN HOME=/root && \
 rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
 
-INSTALL_PKGS="cargo npm openssl-devel libffi-devel libtool-ltdl python3-devel python3-pip python3-cryptography python3-mod_wsgi python3-wheel python3-setuptools jq" && \
+INSTALL_PKGS="cargo npm openssl-devel libffi-devel libtool-ltdl python39-devel python39-pip python39-cryptography python39-mod_wsgi python39-wheel python39-setuptools jq" && \
 dnf module reset nodejs -y && \
-dnf module install nodejs:14 -y && \
+dnf module install nodejs:18 -y && \
 yum update -y && yum -y --setopt=tsflags=nodocs install $INSTALL_PKGS && \
 yum -y clean all --enablerepo='*'
 
@@ -21,8 +21,8 @@ RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
 RUN HOME=/root && \
     npm install -g configurable-http-proxy && \
     REMOVE_PKGS="cargo python3-devel openssl-devel libffi-devel libtool-ltdl gcc rust" && \
-    pip3 install jmespath kubernetes==11.0.0 openshift==0.11.2 setuptools-rust && \
-    pip3 install jupyterhub==1.1.0 jupyterhub-kubespawner==0.13.0 jupyterhub-tmpauthenticator==0.6 oauthenticator==0.10.0 wrapt==1.12.1 && \
+    pip3.9 install jmespath kubernetes==11.0.0 openshift==0.11.2 setuptools-rust && \
+    pip3.9 install jupyterhub==1.1.0 jupyterhub-kubespawner==0.13.0 jupyterhub-tmpauthenticator==0.6 oauthenticator==0.10.0 wrapt==1.12.1 && \
     dnf remove -y $REMOVE_PKGS
 
 # Common environment variables.
