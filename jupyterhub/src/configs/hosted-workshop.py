@@ -18,6 +18,7 @@ client_secret = os.environ['OAUTH_CLIENT_SECRET']
 c.OpenShiftOAuthenticator.client_id = client_id
 c.OpenShiftOAuthenticator.client_secret = client_secret
 c.Authenticator.enable_auth_state = True
+c.OAuthenticator.tls_verify = False
 
 c.CryptKeeper.keys = [ client_secret.encode('utf-8') ]
 
