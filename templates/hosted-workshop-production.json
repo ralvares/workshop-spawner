@@ -419,6 +419,14 @@
                                     {
                                         "name": "OAUTH_CLIENT_SECRET",
                                         "value": "${OAUTH_CLIENT_SECRET}"
+                                    },
+                                    {
+                                        "name": "OAUTH2_TLS_VERIFY",
+                                        "value":"false"
+                                    },
+                                    {
+                                        "name": "OAUTH_TLS_VERIFY",
+                                        "value":"false"
                                     }
                                 ],
                                 "volumeMounts": [
